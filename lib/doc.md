@@ -301,6 +301,6 @@ class GirlGroup implements Idol {}
 
 ## skia라는 게 있는데 잘 모르겠다. 나중에 공부 https://skia.org/docs/user/modules/canvaskit/
 
-## 디자이너들에게 보여줄 Template APP들 https://flutterawesome.com/tag/challenge/ https://flutterawesome.com/tag/apps-tag/
+## 디자이너들에게 보여줄 Template APP들 https://flutterawesome.com/tag/challenge/ https://flutterawesome.com/tag/apps-tag/ https://flutterawesome.com/tag/templates/
 
 ## Google이 사용하고 알려주는 flutter 정보들. https://io.google/2023/program/intl/ko/?q=workshop,codelab,learning-pathway,demo
