@@ -1,38 +1,44 @@
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 import os
+from selenium.webdriver.common.keys import Keys
 import pickle
 import time
 from bs4 import BeautifulSoup
+from konlpy.tag import Okt
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.decomposition import LatentDirichletAllocation
 from selenium.webdriver.chrome.options import Options
 
-# # 네이버 로그인 정보를 환경 변수에서 가져옴
-# naver_id = os.getenv('NAVER_ID')
-# naver_pw = os.getenv('NAVER_PW')
-
 # ChromeDriver의 절대 경로를 지정
-chrome_options = Options()
-chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+options = Options()
+options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 # Your Chrome Driver path
-chrome_driver = "Users/juny/Downloads/chromedriver-mac-x64/chromedriver"
-driver = webdriver.Chrome(chrome_driver, chrome_options=chrome_options)
+chrome_driver = "/Users/juny/Downloads/chromedriver-mac-x64/chromedriver"
+# 웹 드라이버를 실행
+driver = webdriver.Chrome(service=Service(chrome_driver), options=options)
 
+# 네이버 카페 URL
 driver.get("https://cafe.naver.com/perfumelove/1011149")
 
+# 네이버 카페의 경우, 본문이 iframe 안에 있으므로 해당 프레임으로 전환
 driver.switch_to.frame('cafe_main')
 time.sleep(1)
 
 # BeautifulSoup 객체를 생성
 soup = BeautifulSoup(driver.page_source, 'html.parser')
-time.sleep(30)
 
-# # 선택된 div 요소 안의 모든 p 요소의 텍스트를 합침
-# text = ' '.join(p.get_text() for p in soup.select('div.article_viewer p'))
-# # 텍스트를 출력
-# print(text)
+# 선택된 div 요소 안의 모든 p 요소의 텍스트를 합침
+text = ' '.join(p.get_text() for p in soup.select('div.article_viewer p'))
 
-# # 웹 드라이버를 종료
-# driver.quit()
+# 텍스트를 출력
+print(text)
 
+# 웹 드라이버를 종료
+driver.quit()
 # # 리뷰 데이터
 # reviews = [text]  # 스크래핑한 텍스트를 리뷰 데이터로 사용
 # print(reviews)
