@@ -522,3 +522,25 @@ flutter build windows --analyze-size (only windows host)
 주요 단어나 문구의 빈도를 분석하여 반복적으로 등장하는 키워드를 주목해주세요.
 
 ---
+
+
+커밋 메세지
+
+최초 공개
+- Update
+- version
+- Bump
+- Remove
+- Delete
+- Inital
+- Add
+- Tweak
+- Merge
+- Reorder
+- Fix
+이런 단어로 커밋메세지 작성
+
+끝나고 잡학사전 챌린지 책읽기
+프롬프트 끝?
+애니메이션,
+TF-IDF, BERT 섞어쓰기
